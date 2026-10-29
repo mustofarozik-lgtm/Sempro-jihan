@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f6">
+<title>Selamat Sempro, Jihan! 💗</title>
+<style>
+  :root{
+    --pink:#f7a8c4; --pink-dark:#d94f86; --cream:#fff8fb;
+    --lavender:#e8ddff; --ink:#60384d; --white:#fff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background:radial-gradient(circle at 15% 15%,#fff 0 7%,transparent 25%),
+      linear-gradient(145deg,#fff4f8,#f8efff 58%,#fff8ef);
+  }
+  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:26px 14px;position:relative}
+  .card{
+    width:min(720px,100%); position:relative; z-index:2; text-align:center;
+    padding:clamp(24px,6vw,52px) clamp(18px,5vw,48px); border:1px solid #fff;
+    border-radius:30px; background:rgba(255,255,255,.78);
+    box-shadow:0 20px 60px rgba(176,92,135,.16); backdrop-filter:blur(8px);
+  }
+  .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;color:var(--pink-dark);font-weight:800}
+  h1{font-family:Georgia,serif;font-weight:700;font-size:clamp(2.2rem,8vw,4.3rem);line-height:1.05;margin:14px 0;color:#c7477b}
+  .subtitle{font-size:clamp(1rem,3vw,1.2rem);line-height:1.7;max-width:540px;margin:0 auto}
+  .flower-line{font-size:1.7rem;letter-spacing:.2em;margin:18px 0}
+  .photo-wrap{width:128px;height:128px;border-radius:50%;margin:22px auto 18px;padding:5px;background:linear-gradient(135deg,#f5a8c5,#d9c5ff,#ffe0a6);box-shadow:0 8px 24px #d88caf45}
+  .photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:#fff0f6}
+  .message{font-size:1.06rem;line-height:1.9;white-space:pre-line;margin:18px auto;max-width:560px}
+  .signature{font-family:Georgia,serif;font-style:italic;color:#c7477b;font-size:1.25rem;margin-top:20px}
+  button{
+    border:0;cursor:pointer;border-radius:999px;padding:14px 23px;font-weight:800;font-size:1rem;
+    color:#fff;background:linear-gradient(120deg,#ed7ba7,#b38ae8);box-shadow:0 9px 20px #d88caf55;
+    transition:transform .2s,filter .2s;margin:7px;
+  }
+  button:hover{transform:translateY(-2px);filter:saturate(1.1)}
+  .secondary{background:#fff;color:#b74479;border:1px solid #f2bfd2;box-shadow:none}
+  .surprise{display:none;margin:24px auto 0;padding:20px;border-radius:20px;background:#fff3f8;border:1px dashed #e9a1bf;animation:pop .5s ease;line-height:1.8}
+  .hint{font-size:.78rem;opacity:.68;margin-top:22px}
+  .floating{position:fixed;bottom:-40px;z-index:1;pointer-events:none;animation:floatUp linear forwards;opacity:.8}
+  .sparkle{position:fixed;pointer-events:none;z-index:3;animation:sparkle 1s ease-out forwards}
+  .controls{display:none;text-align:left;background:#fff8fc;padding:18px;border-radius:18px;margin-top:22px;border:1px solid #f3d5e1}
+  .controls label{display:block;font-weight:700;font-size:.88rem;margin:12px 0 5px}
+  .controls input,.controls textarea{width:100%;padding:11px;border:1px solid #e7bfd0;border-radius:10px;font:inherit;color:var(--ink);background:white}
+  .controls textarea{min-height:90px;resize:vertical}
+  .note{font-size:.8rem;line-height:1.5;color:#81566a}
+  @keyframes floatUp{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+  @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+  @keyframes sparkle{0%{transform:scale(.2);opacity:0}35%{transform:scale(1.3);opacity:1}100%{transform:translateY(-35px) scale(.5);opacity:0}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="card">
+    <div class="eyebrow">A little celebration for you</div>
+    <div class="flower-line" aria-hidden="true">🌷 ✨ 🌸</div>
+    <div class="photo-wrap" id="photoWrap" style="display:none"><img id="portrait" alt="Foto Jihan"></div>
+    <h1 id="headline">Selamat Sempro,<br>Jihan! 💗</h1>
+    <p class="subtitle" id="subtitle">Satu langkah indah sudah kamu lewati. Hari ini waktunya merayakan usaha dan keberanianmu! 🎓</p>
+    <div class="flower-line" aria-hidden="true">♡ 🌼 ♡</div>
+    <p class="message" id="message">Semoga Jihan sehat selalu, dilancarkan setiap prosesnya, dan sukses menyelesaikan skripsinya sampai sidang dan wisuda nanti. Semoga semua kerja kerasmu berbuah hasil yang indah. Aamiin! 🤍
+
+Semangat terus, Jihan. Kamu pasti bisa! 🌷</p>
+    <button id="surpriseBtn" type="button">Buka Kejutan 💌</button>
+    <div class="surprise" id="surprise">
+      <div style="font-size:2rem">💐 💖 🎉</div>
+      <strong>Pesan kecil untuk Jihan</strong><br>
+      Jangan lupa istirahat, makan teratur, dan jaga kesehatan, ya. Pelan-pelan saja, satu per satu pasti selesai. Aku ikut senang dan mendoakan yang terbaik untukmu! 🫶
+      <div style="font-size:1.5rem;margin-top:8px">🌸✨🌸</div>
+    </div>
+    <div style="margin-top:18px">
+      <button class="secondary" id="editBtn" type="button">Sesuaikan Ucapan ⚙️</button>
+      <button class="secondary" id="confettiBtn" type="button">Rayakan Lagi 🎊</button>
+    </div>
+    <section class="controls" id="controls">
+      <p class="note"><strong>Mode edit:</strong> perubahan di sini hanya tersimpan pada browser/perangkat yang sedang digunakan. Untuk mengubah tampilan pada tautan publik bagi semua orang, edit bagian <code>EDIT BAGIAN INI</code> di file HTML lalu unggah ulang.</p>
+      <label for="nameInput">Nama</label><input id="nameInput" value="Jihan">
+      <label for="subtitleInput">Kalimat pembuka</label><textarea id="subtitleInput">Satu langkah indah sudah kamu lewati. Hari ini waktunya merayakan usaha dan keberanianmu! 🎓</textarea>
+      <label for="messageInput">Ucapan utama</label><textarea id="messageInput">Semoga Jihan sehat selalu, dilancarkan setiap prosesnya, dan sukses menyelesaikan skripsinya sampai sidang dan wisuda nanti. Semoga semua kerja kerasmu berbuah hasil yang indah. Aamiin! 🤍
+
+Semangat terus, Jihan. Kamu pasti bisa! 🌷</textarea>
+      <label for="surpriseInput">Pesan kejutan</label><textarea id="surpriseInput">Jangan lupa istirahat, makan teratur, dan jaga kesehatan, ya. Pelan-pelan saja, satu per satu pasti selesai. Aku ikut senang dan mendoakan yang terbaik untukmu! 🫶</textarea>
+      <label for="photoInput">Pilih foto dari HP (pratinjau saja)</label><input id="photoInput" type="file" accept="image/*">
+      <label for="photoUrlInput">Atau URL foto publik (agar bisa tampil untuk pengunjung)</label><input id="photoUrlInput" type="url" placeholder="https://.../foto.jpg">
+      <button id="applyBtn" type="button">Terapkan Perubahan</button>
+      <button class="secondary" id="resetBtn" type="button">Pulihkan Teks Awal</button>
+    </section>
+    <p class="hint">Dibuat dengan doa baik, bunga, dan sedikit keajaiban ✨</p>
+  </main>
+</div>
+<script>
+/* ================= EDIT BAGIAN INI =================
+   Untuk mengubah isi website yang tampil pada tautan publik,
+   ganti teks di bawah ini, simpan file, lalu unggah ulang.
+*/
+const SITE_CONTENT = {
+  name: "Jihan",
+  subtitle: "Satu langkah indah sudah kamu lewati. Hari ini waktunya merayakan usaha dan keberanianmu! 🎓",
+  message: "Semoga Jihan sehat selalu, dilancarkan setiap prosesnya, dan sukses menyelesaikan skripsinya sampai sidang dan wisuda nanti. Semoga semua kerja kerasmu berbuah hasil yang indah. Aamiin! 🤍\\n\\nSemangat terus, Jihan. Kamu pasti bisa! 🌷",
+  surprise: "Jangan lupa istirahat, makan teratur, dan jaga kesehatan, ya. Pelan-pelan saja, satu per satu pasti selesai. Aku ikut senang dan mendoakan yang terbaik untukmu! 🫶",
+  photoUrl: "" // Isi dengan URL foto publik jika ingin foto tampil di semua perangkat.
+};
+/* =============== AKHIR EDIT BAGIAN INI =============== */
+
+const $ = id => document.getElementById(id);
+function renderContent(c){
+  $('headline').innerHTML = `Selamat Sempro,<br>${escapeHTML(c.name)}! 💗`;
+  $('subtitle').textContent = c.subtitle;
+  $('message').textContent = c.message;
+  $('surprise').innerHTML = `<div style="font-size:2rem">💐 💖 🎉</div><strong>Pesan kecil untuk ${escapeHTML(c.name)}</strong><br>${escapeHTML(c.surprise)}<div style="font-size:1.5rem;margin-top:8px">🌸✨🌸</div>`;
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+renderContent(SITE_CONTENT);
+if(SITE_CONTENT.photoUrl){$('portrait').src=SITE_CONTENT.photoUrl;$('photoWrap').style.display='block';}
+$('surpriseBtn').addEventListener('click',()=>{
+  const box=$('surprise'); box.style.display=box.style.display==='block'?'none':'block';
+  if(box.style.display==='block'){celebrate(38);box.scrollIntoView({behavior:'smooth',block:'nearest'});}
+});
+$('confettiBtn').addEventListener('click',()=>celebrate(55));
+function celebrate(count=35){
+  const bits=['🌸','💗','💕','✨','🌷','💐','🎉','🤍','🌼'];
+  for(let i=0;i<count;i++){
+    const el=document.createElement('span');el.className='floating';
+    el.textContent=bits[Math.floor(Math.random()*bits.length)];
+    el.style.left=Math.random()*100+'vw';el.style.fontSize=(16+Math.random()*22)+'px';
+    el.style.animationDuration=(4+Math.random()*5)+'s';el.style.animationDelay=(Math.random()*1.4)+'s';
+    document.body.appendChild(el);setTimeout(()=>el.remove(),10500);
+  }
+}
+setInterval(()=>{if(Math.random()>.35)celebrate(1)},1900);
+$('editBtn').addEventListener('click',()=>{$('controls').style.display=$('controls').style.display==='block'?'none':'block';});
+$('applyBtn').addEventListener('click',()=>{
+  const c={name:$('nameInput').value.trim()||'Jihan',subtitle:$('subtitleInput').value,message:$('messageInput').value,surprise:$('surpriseInput').value};
+  renderContent(c);
+  try{localStorage.setItem('jihanGreetingEdits',JSON.stringify(c));}catch(e){}
+  const url=$('photoUrlInput').value.trim();
+  if(url){$('portrait').src=url;$('photoWrap').style.display='block';}
+  celebrate(25);
+});
+$('resetBtn').addEventListener('click',()=>{
+  $('nameInput').value=SITE_CONTENT.name;$('subtitleInput').value=SITE_CONTENT.subtitle;
+  $('messageInput').value=SITE_CONTENT.message;$('surpriseInput').value=SITE_CONTENT.surprise;
+  $('photoUrlInput').value=SITE_CONTENT.photoUrl;renderContent(SITE_CONTENT);
+});
+$('photoInput').addEventListener('change',e=>{
+  const file=e.target.files&&e.target.files[0];if(!file)return;
+  const reader=new FileReader();reader.onload=()=>{$('portrait').src=reader.result;$('photoWrap').style.display='block';};reader.readAsDataURL(file);
+});
+try{
+ const saved=localStorage.getItem('jihanGreetingEdits');
+ if(saved){const c=JSON.parse(saved);renderContent(c);$('nameInput').value=c.name;$('subtitleInput').value=c.subtitle;$('messageInput').value=c.message;$('surpriseInput').value=c.surprise;}
+}catch(e){}
+celebrate(20);
+</script>
+</body>
+</html>
